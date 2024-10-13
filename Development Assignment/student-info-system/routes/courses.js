@@ -11,6 +11,7 @@ router.post('/', async (req, res) => {
     const course = await Course.create(req.body);
     res.status(201).json(course);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Error creating course' });
   }
 });
@@ -20,6 +21,7 @@ router.get('/', async (req, res) => {
     const courses = await Course.findAll();
     res.json(courses);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Error fetching courses' });
   }
 });

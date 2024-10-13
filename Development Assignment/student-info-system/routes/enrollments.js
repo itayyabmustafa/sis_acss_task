@@ -11,6 +11,7 @@ router.post('/', async (req, res) => {
     const enrollment = await Enrollment.create(req.body);
     res.status(201).json(enrollment);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Error creating enrollment' });
   }
 });
@@ -20,6 +21,7 @@ router.get('/', async (req, res) => {
     const enrollments = await Enrollment.findAll();
     res.json(enrollments);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Error fetching enrollments' });
   }
 });

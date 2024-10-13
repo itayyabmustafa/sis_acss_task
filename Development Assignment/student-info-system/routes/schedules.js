@@ -12,6 +12,7 @@ router.post('/', async (req, res) => {
     const schedule = await Schedule.create(req.body);
     res.status(201).json(schedule);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Error creating schedule' });
   }
 });
@@ -21,6 +22,7 @@ router.get('/', async (req, res) => {
     const schedules = await Schedule.findAll();
     res.json(schedules);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Error fetching schedules' });
   }
 });

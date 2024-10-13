@@ -21,6 +21,7 @@ router.get('/', async (req, res) => {
     const rooms = await Room.findAll();
     res.json(rooms);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Error fetching rooms' });
   }
 });
