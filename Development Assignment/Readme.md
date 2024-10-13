@@ -1,4 +1,4 @@
-Certainly! Here’s a detailed `README.md` file that you can use for your Student Information System (SIS) and Academic Scheduling System (ACSS) project. This file will cover installation instructions, usage, and more.
+`README.md` for Student Information System (SIS) and Academic Scheduling System (ACSS) project. This file will cover installation instructions, usage, and more.
 
 ```markdown
 # Student Information System (SIS) & Academic Scheduling System (ACSS)
