@@ -1,0 +1,8 @@
+{
+  "name": "integration-task",
+  "version": "1.0.0",
+  "main": "integration.js",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}

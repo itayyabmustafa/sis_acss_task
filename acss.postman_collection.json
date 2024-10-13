@@ -1,14 +1,14 @@
 {
 	"info": {
-		"_postman_id": "sis-collection-id",
-		"name": "Student Information System (SIS)",
-		"description": "A collection of API endpoints for the Student Information System",
+		"_postman_id": "acss-collection-id",
+		"name": "Academic Scheduling System (ACSS)",
+		"description": "A collection of API endpoints for the Academic Scheduling System.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "http://localhost:3000"
+			"value": "http://localhost:3001"
 		},
 		{
 			"key": "token",
@@ -88,10 +88,10 @@
 			]
 		},
 		{
-			"name": "Students",
+			"name": "Rooms",
 			"item": [
 				{
-					"name": "Create Student",
+					"name": "Create Room",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -106,22 +106,22 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"dob\": \"2000-01-01\",\n    \"programEnrolled\": \"Computer Science\"\n}"
+							"raw": "{\n    \"roomName\": \"Room 101\",\n    \"capacity\": 30\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/students",
+							"raw": "{{base_url}}/rooms",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"students"
+								"rooms"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get All Students",
+					"name": "Get All Rooms",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -131,150 +131,12 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/students",
+							"raw": "{{base_url}}/rooms",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"students"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Courses",
-			"item": [
-				{
-					"name": "Create Course",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "{{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Introduction to Computer Science\",\n    \"instructor\": \"Dr. Jane Smith\",\n    \"credits\": 3\n}"
-						},
-						"url": {
-							"raw": "{{base_url}}/courses",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"courses"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get All Courses",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}"
-							}
-						],
-						"url": {
-							"raw": "{{base_url}}/courses",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"courses"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Enrollments",
-			"item": [
-				{
-					"name": "Create Enrollment",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "{{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"studentId\": 1,\n    \"courseId\": 1,\n    \"enrollmentDate\": \"2023-05-01\"\n}"
-						},
-						"url": {
-							"raw": "{{base_url}}/enrollments",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"enrollments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get All Enrollments",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}"
-							}
-						],
-						"url": {
-							"raw": "{{base_url}}/enrollments",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"enrollments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Enrollments by Course",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}"
-							}
-						],
-						"url": {
-							"raw": "{{base_url}}/enrollments/course/1",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"enrollments",
-								"course",
-								"1"
+								"rooms"
 							]
 						}
 					},
@@ -301,7 +163,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"courseId\": 1,\n    \"room\": \"Room 101\",\n    \"startTime\": \"09:00:00\",\n    \"endTime\": \"10:30:00\",\n    \"dayOfWeek\": \"Monday\"\n}"
+							"raw": "{\n    \"course\": \"Math 101\",\n    \"roomId\": 1,\n    \"startTime\": \"10:00:00\",\n    \"endTime\": \"11:30:00\",\n    \"dayOfWeek\": \"Monday\"\n}"
 						},
 						"url": {
 							"raw": "{{base_url}}/schedules",
@@ -338,7 +200,35 @@
 					"response": []
 				},
 				{
-					"name": "Import Schedules",
+					"name": "Export Schedules",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/schedules/export",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"schedules",
+								"export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enrollments",
+			"item": [
+				{
+					"name": "Create Enrollment",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -353,15 +243,67 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"xml\": \"<schedules><schedule><courseId>1</courseId><room>Room 202</room><startTime>14:00:00</startTime><endTime>15:30:00</endTime><dayOfWeek>Wednesday</dayOfWeek></schedule></schedules>\"\n}"
+							"raw": "{\n    \"student\": \"John Doe\",\n    \"course\": \"Math 101\",\n    \"enrollmentDate\": \"2024-01-01\"\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/schedules/import",
+							"raw": "{{base_url}}/enrollments",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"schedules",
+								"enrollments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Enrollments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/enrollments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"enrollments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import Enrollments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"student\": \"Jane Smith\",\n        \"course\": \"Math 101\",\n        \"enrollmentDate\": \"2024-01-01\"\n    },\n    {\n        \"student\": \"Mark Johnson\",\n        \"course\": \"Science 101\",\n        \"enrollmentDate\": \"2024-01-02\"\n    }\n]"
+						},
+						"url": {
+							"raw": "{{base_url}}/enrollments/import",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"enrollments",
 								"import"
 							]
 						}
@@ -372,3 +314,4 @@
 		}
 	]
 }
+
