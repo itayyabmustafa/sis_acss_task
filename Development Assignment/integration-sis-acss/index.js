@@ -25,8 +25,8 @@ async function sendEnrollmentData(courseId) {
     });
 
     const enrollmentData = enrollmentResponse.data.map(enrollment => ({
-      student: enrollment.Student.name,
-      course: enrollment.Course.name,
+      studentId: enrollment.studentId,
+      courseId: enrollment.courseId,
       enrollmentDate: enrollment.enrollmentDate
     }));
 
@@ -37,7 +37,7 @@ async function sendEnrollmentData(courseId) {
 
     console.log('Enrollment data sent successfully');
   } catch (error) {
-    console.error('Error sending enrollment data:', error.message);
+    console.error('Error sending enrollment data:', error);
   }
 }
 
@@ -61,7 +61,7 @@ async function sendScheduleData() {
 
     console.log('Schedule data sent successfully');
   } catch (error) {
-    console.error('Error sending schedule data:', error.message);
+    console.error('Error sending schedule data:', error);
   }
 }
 
