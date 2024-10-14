@@ -1,8 +1,9 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('sis', 'root', 'root123', {
-  host: 'localhost',
-  dialect: 'mysql'
+const sequelize = new Sequelize('sis', 'root', '', {
+  host: 'localhost',       // MySQL server address
+  dialect: 'mysql',        // Dialect (mysql)
+  logging: console.log,    // Log SQL queries
 });
 
 const User = require('./user.model')(sequelize);
